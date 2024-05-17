@@ -30,4 +30,12 @@ export const mealsRoutes = async (app: FastifyInstance) => {
 
     return reply.status(201).send();
   });
+
+  app.get("/", async (request, reply) => {
+    const meals = await knex("meals").where("user_id", request.user?.id);
+
+    return reply.send({
+      meals,
+    });
+  });
 };
