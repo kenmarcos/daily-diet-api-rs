@@ -38,4 +38,24 @@ export const mealsRoutes = async (app: FastifyInstance) => {
       meals,
     });
   });
+
+  app.delete("/:id", async (request, reply) => {
+    const deleteMealParamsSchema = z.object({
+      id: z.string().uuid(),
+    });
+
+    const { id } = deleteMealParamsSchema.parse(request.params);
+
+    const mealById = await knex("meals").where("id", id).first();
+
+    if (!mealById) {
+      return reply.status(404).send({
+        message: "Meal not found",
+      });
+    }
+
+    await knex("meals").where("id", id).delete();
+
+    return reply.status(204).send();
+  });
 };
