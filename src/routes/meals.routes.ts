@@ -91,6 +91,8 @@ export const mealsRoutes = async (app: FastifyInstance) => {
       date: date.toISOString(),
       is_on_diet: isOnDiet,
     });
+
+    return reply.status(204).send();
   });
 
   app.delete("/:id", async (request, reply) => {

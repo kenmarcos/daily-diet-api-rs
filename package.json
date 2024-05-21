@@ -7,14 +7,16 @@
     "node": ">=20.6.0"
   },
   "scripts": {
-    "dev": "tsx watch --env-file=.env src/server.ts",
-    "knex": "node --env-file=.env --no-warnings --import tsx ./node_modules/.bin/knex"
+    "dev": "tsx watch src/server.ts",
+    "knex": "node --env-file=.env --no-warnings --import tsx ./node_modules/.bin/knex",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@fastify/cookie": "^9.3.1",
+    "dotenv": "^16.4.5",
     "fastify": "^4.27.0",
     "knex": "^3.1.0",
     "sqlite3": "^5.1.7",
@@ -22,7 +24,10 @@
   },
   "devDependencies": {
     "@types/node": "^20.12.12",
+    "@types/supertest": "^6.0.2",
+    "supertest": "^7.0.0",
     "tsx": "^4.10.4",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
   }
 }
